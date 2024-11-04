@@ -1,8 +1,8 @@
 @import 'boxicons/css/boxicons.min.css';
+@import 'vue-toast-notification/dist/theme-sugar.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 :root {
   --color-white30: #FFFFFF4C;
@@ -65,4 +65,8 @@ h2 {
 
 ::selection {
   @apply bg-text-primary text-primary;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
 }

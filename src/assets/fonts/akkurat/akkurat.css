@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'Akkurat';
+    font-weight: normal;
+    font-display: swap;
+    font-style: normal;
+    src: url("Akkurat-Regular.woff") format("woff");
+}
+
+@font-face {
+    font-family: 'Akkurat';
+    font-weight: normal;
+    font-display: swap;
+    font-style: italic;
+    src: url("Akkurat-Italic.woff") format("woff");
+}
+
+@font-face {
+    font-family: 'Akkurat';
+    font-weight: bold;
+    font-display: swap;
+    font-style: italic;
+    src: url("Akkurat-BoldItalic.woff") format("woff");
+}
+
+@font-face {
+    font-family: 'Akkurat';
+    font-weight: bold;
+    font-display: swap;
+    font-style: normal;
+    src: url("Akkurat-Bold.woff") format("woff");
+}
+
+@font-face {
+    font-family: 'Akkurat';
+    font-weight: 300;
+    font-display: swap;
+    font-style: normal;
+    src: url("Akkurat-Light.woff") format("woff");
+}
+
+@font-face {
+    font-family: 'Akkurat';
+    font-weight: 300;
+    font-display: swap;
+    font-style: italic;
+    src: url("Akkurat-LightItalic.woff") format("woff");
+}

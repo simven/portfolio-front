@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 export const useDate = defineStore('date', () => {
-  const getDayMonthYear = (date, locale = 'fr-FR') => {
+  const getDayMonthYear = (date: string, locale = 'fr-FR') => {
     if (!date) return '';
     const dateObj = new Date(date);
     return dateObj.toLocaleDateString(locale, {
@@ -11,7 +11,7 @@ export const useDate = defineStore('date', () => {
     });
   };
 
-  const getMonthYear = (date, locale = 'fr-FR') => {
+  const getMonthYear = (date: string, locale = 'fr-FR') => {
     if (!date) return '';
     const dateObj = new Date(date);
     return dateObj.toLocaleDateString(locale, {
@@ -20,7 +20,7 @@ export const useDate = defineStore('date', () => {
     });
   };
 
-  const getYear = (date, locale = 'fr-FR') => {
+  const getYear = (date: string, locale = 'fr-FR') => {
     if (!date) return '';
     const dateObj = new Date(date);
     return dateObj.toLocaleDateString(locale, {

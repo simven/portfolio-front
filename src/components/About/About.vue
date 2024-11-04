@@ -1,34 +1,38 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
-import Experience from '@/components/About/Experience.vue'
+import Experience, { type ExperienceType } from '@/components/About/Experience.vue'
 
-const hobbies = ref(null);
-const experiences = ref(null);
-const currentExperience = ref(null);
+export interface HobbyType {
+  id: number
+  name: string
+  icon: string
+  display: boolean
+}
+
+const hobbies = ref<HobbyType[]|null>(null);
+const experiences = ref<ExperienceType[]|null>(null);
+const currentExperience = ref<ExperienceType|null>(null);
 
 onMounted(() => {
-  axios.get('http://localhost:8080/api/hobby')
+  axios.get(import.meta.env.VITE_API_BASE_URL + '/hobby')
     .then(response => {
-      console.log(response.data);
       hobbies.value = response.data;
     })
     .catch(error => {
       console.error(error);
     });
 
-  axios.get('http://localhost:8080/api/experience')
+  axios.get(import.meta.env.VITE_API_BASE_URL + '/experience')
     .then(response => {
-      console.log(response.data);
-
-      experiences.value = response.data.toSorted((a, b) => {
+      experiences.value = response.data.toSorted((a: ExperienceType, b: ExperienceType) => {
         const dateA = a.toDate || a.fromDate;
         const dateB = b.toDate || b.fromDate;
 
         return new Date(dateB).getTime() - new Date(dateA).getTime();
       });
 
-      currentExperience.value = response.data.find(e => e.current);
+      currentExperience.value = response.data.find((e: ExperienceType) => e.current);
     })
     .catch(error => {
       console.error(error);

@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
-import Skill from '@/components/Skill/Skill.vue'
+import Skill, { type SkillTypeType } from '@/components/Skill/Skill.vue'
 
-const skillTypes = ref(null);
+const skillTypes = ref<SkillTypeType[]|null>(null);
 
 onMounted(() => {
-  axios.get('http://localhost:8080/api/skill-type')
+  axios.get(import.meta.env.VITE_API_BASE_URL + '/skill-type')
     .then(response => {
-      console.log(response.data);
-      skillTypes.value = response.data.map(st => ({
+      skillTypes.value = response.data.map((st: SkillTypeType) => ({
         ...st,
         skills: st.skills.filter(s => s.display)
       }));

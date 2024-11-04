@@ -2,7 +2,7 @@
 import { useDate } from '@/stores/date'
 import { useString } from '@/stores/string'
 
-export interface Experience {
+export interface ExperienceType {
   id: number
   name: string
   contract: string
@@ -17,7 +17,7 @@ export interface Experience {
 }
 
 defineProps<{
-  experience: Experience
+  experience: ExperienceType
 }>()
 
 const { getYear } = useDate()

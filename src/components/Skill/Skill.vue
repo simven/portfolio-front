@@ -1,12 +1,12 @@
 <script setup lang="ts">
-interface SkillType {
+export interface SkillTypeType {
   id: number
   name: string
   position: number
-  skills: Skill[]
+  skills: SkillType[]
 }
 
-export interface Skill {
+export interface SkillType {
   id: number
   name: string
   description: string
@@ -16,7 +16,7 @@ export interface Skill {
 }
 
 defineProps<{
-  skillType: SkillType
+  skillType: SkillTypeType
 }>()
 </script>
 

@@ -1,29 +1,29 @@
 <script setup lang="ts">
 
-import type { Skill } from '@/components/Skill/Skill.vue'
+import type { SkillType } from '@/components/Skill/Skill.vue'
 
-export interface Project {
+export interface ProjectType {
   id: number;
   name: string;
   description: string;
   descriptionShort: string;
-  projectType: ProjectType;
+  projectType: ProjectTypeType;
   appUrl: string;
   repoUrl: string;
   iconUrl: string;
   imageUrl: string;
   fromDate: string;
   toDate: string;
-  skills: Skill[];
+  skills: SkillType[];
   display: boolean;
 }
-interface ProjectType {
+export interface ProjectTypeType {
   id: number;
   name: string;
 }
 
 const props = defineProps<{
-  project: Project;
+  project: ProjectType;
 }>();
 
 const emit = defineEmits(['openModal']);

@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import axios from 'axios'
+import axios, { type AxiosError } from 'axios'
+import { useChallengeV3 } from 'vue-recaptcha/head'
+import {useToast} from 'vue-toast-notification';
 
+const $toast = useToast();
+const { execute } = useChallengeV3('submit')
+
+const loading = ref(false);
 const msgForm = ref({
   name: '',
   email: '',
@@ -10,20 +16,22 @@ const msgForm = ref({
 
 const isFormValid = computed(() => msgForm.value.name !== '' && msgForm.value.email !== '' && msgForm.value.message !== '');
 
-const sendMail = () => {
-  grecaptcha.ready(() => {
-    grecaptcha.execute('6LcxcOwfAAAAAEpQ-YowAGDZjNNXhHRXb5Dk-H8p', { action: 'submit' }).then((token) => {
-      console.log(token);
+const sendMail = async () => {
+  loading.value = true;
 
-      axios.post('http://localhost:8080/api/email/send?token=' + token, msgForm.value)
-        .then(() => {
-          console.log("email envoyé");
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    });
-  });
+  const grecaptchaToken = await execute();
+
+  if (grecaptchaToken) {
+    axios.post(import.meta.env.VITE_API_BASE_URL + '/email/send?token=' + grecaptchaToken, msgForm.value)
+      .then(() => {
+        $toast.success('Message envoyé !')
+        loading.value = false;
+      })
+      .catch((error: AxiosError) => {
+        $toast.success('Erreur : ' + error.message)
+        loading.value = false;
+      });
+  }
 }
 </script>
 
@@ -54,12 +62,9 @@ const sendMail = () => {
           </div>
 
           <button
-            :disabled="!isFormValid"
-            :class="{ 'opacity-40': !isFormValid }"
-            class="g-recaptcha"
-            data-sitekey="6LcxcOwfAAAAAEpQ-YowAGDZjNNXhHRXb5Dk-H8p"
-            data-callback="verifyCaptcha"
-            data-action="submit">
+            :disabled="!isFormValid || loading"
+            :class="{ 'opacity-40': !isFormValid || loading }">
+
             Envoyer
           </button>
         </form>
