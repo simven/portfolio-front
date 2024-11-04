@@ -1,0 +1,68 @@
+@import 'boxicons/css/boxicons.min.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --color-white30: #FFFFFF4C;
+  --color-beige: #EDE7DEFF;
+  --color-green300: #D4EDE4FF;
+  --color-green400: #8FDCC2FF;
+  --color-green500: #025A4EFF;
+  --color-green600: #4C6763FF;
+  --color-green650: #39594FFF;
+  --color-green700: #364442FF;
+  --color-green750: #8FDCC20C;
+  --color-green800: #233831FF;
+  --color-opaque: #FFFFFF7F;
+
+
+  --color-primary: var(--color-beige);
+  --color-text-primary: var(--color-green500);
+  --color-text-secondary: var(--color-green600);
+  --color-border-primary: white;
+  --color-border-secondary: var(--color-white30);
+}
+
+.dark:root {
+  --color-white30: #8FDCC20C;
+  --color-opaque: #8FDCC219;
+  --color-primary: var(--color-green800);
+  --color-text-primary: var(--color-green400);
+  --color-text-secondary: var(--color-green300);
+  --color-border-primary: var(--color-green650);
+  --color-border-secondary: var(--color-green750);
+}
+
+body {
+  background: var(--color-primary);
+  color: var(--color-text-primary);
+  font-family: "Akkurat", "sans-serif";
+  font-size: clamp(1rem, .88rem + .49vw, 1.375rem);
+}
+
+p {
+  @apply text-text-secondary;
+  color: var(--color-text-secondary);
+  font-size: clamp(1rem, .88rem + .49vw, 1.375rem);
+}
+
+h1 {
+  @apply font-boiling;
+  font-size: clamp(3rem, .5rem + 6vw, 13.75rem);
+  line-height: 100%;
+}
+
+h1.title {
+  @apply py-12 md:pt-20;
+}
+
+h2 {
+  @apply font-boiling;
+  font-size: clamp(1.5rem, .15rem + 2vw, 3.95rem);
+}
+
+::selection {
+  @apply bg-text-primary text-primary;
+}
