@@ -31,7 +31,7 @@ onUnmounted(() => {
           <a class="mx-3 px-2.5 py-1.5 md:px-5 text-text-secondary" href="#contact">Contact</a>
         </li>
         <li>
-          <a class="mx-3 px-2.5 py-1.5 md:px-5 text-text-secondary" href="../../public/CV_Simon_Vennat.pdf" role="button" target="_blank">CV</a>
+          <a class="mx-3 px-2.5 py-1.5 md:px-5 text-text-secondary" href="/CV_Simon_Vennat.pdf" role="button" target="_blank">CV</a>
         </li>
       </ul>
     </nav>
