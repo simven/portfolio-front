@@ -21,7 +21,7 @@ useRecaptchaProvider()
 
   <Header />
 
-  <main class="px-8 ">
+  <main class="px-8">
     <Hero />
 
     <About />

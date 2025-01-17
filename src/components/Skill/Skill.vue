@@ -30,7 +30,7 @@ defineProps<{
           <div class="flex flex-row">
 
             <span class="flex items-center mr-3" v-if="skill.iconUrl">
-              <img class="transition-all duration-200 ease-in-out" :src="skill.iconUrl" alt="" width="25" height="25" loading="lazy">
+              <img class="transition-all duration-200 ease-in-out h-[25px]" :src="skill.iconUrl" alt="" width="25" height="25" loading="lazy">
             </span>
 
             <p class="text-text-secondary text-base px-3 py-2 bg-beige-400 dark:bg-green-800 rounded-md" :title="skill.masteryPercent + '%'">{{ skill.name }}</p>
