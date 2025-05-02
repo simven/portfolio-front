@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import axios, { type AxiosError } from 'axios'
-import { useChallengeV3 } from 'vue-recaptcha/head'
 import {useToast} from 'vue-toast-notification';
+import { useRecaptcha } from '@/composables/useRecaptcha'
 
 const $toast = useToast();
-const { execute } = useChallengeV3('submit')
+
+const { executeRecaptcha } = useRecaptcha();
+const siteKey = '6LeaPCsrAAAAAP3CuVQ7HjMxI3VP395fftmTsbKM';
 
 const loading = ref(false);
 const msgForm = ref({
@@ -19,16 +21,30 @@ const isFormValid = computed(() => msgForm.value.name !== '' && msgForm.value.em
 const sendMail = async () => {
   loading.value = true;
 
-  const grecaptchaToken = await execute();
+  const grecaptchaToken = await executeRecaptcha(siteKey);
+
+  const msgBody = {
+    fromName: msgForm.value.name,
+    fromEmail: msgForm.value.email,
+    to: 'simonvennat@gmail.com',
+    subject: 'Nouveau message de ' + msgForm.value.name,
+    message: msgForm.value.message,
+    captchaToken: grecaptchaToken,
+  }
 
   if (grecaptchaToken) {
-    axios.post(import.meta.env.VITE_API_BASE_URL + '/email/send?token=' + grecaptchaToken, msgForm.value)
+    axios.post(import.meta.env.VITE_API_BASE_URL + '/email/send/1', msgBody)
       .then(() => {
         $toast.success('Message envoyé !')
         loading.value = false;
+        msgForm.value = {
+          name: '',
+          email: '',
+          message: ''
+        }
       })
       .catch((error: AxiosError) => {
-        $toast.success('Erreur : ' + error.message)
+        $toast.error('Erreur : ' + error.message)
         loading.value = false;
       });
   }

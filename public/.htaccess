@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Redirection 301 de www vers non-www
+    RewriteCond %{HTTP_HOST} ^www\.simonvennat\.fr$ [NC]
+    RewriteRule ^(.*)$ https://simonvennat.fr/$1 [R=301,L]
+
+    # Réécriture pour les fichiers manquants vers index.html
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.html [L]
+</IfModule>

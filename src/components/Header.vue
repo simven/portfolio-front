@@ -19,19 +19,19 @@ onUnmounted(() => {
     <nav class="flex justify-center items-center mt-5 mx-auto text-base">
       <ul class="flex flex-wrap justify-center p-2.5 rounded-full transition-all duration-200 ease-linear bg-beige-300 dark:bg-green-750">
         <li>
-          <a class="mx-3 px-2.5 py-1.5 md:px-5 text-text-secondary" href="#about">Profil</a>
+          <a class="mx-3 py-1.5 md:px-5 text-text-secondary" href="#about">Profil</a>
         </li>
         <li>
-          <a class="mx-3 px-2.5 py-1.5 md:px-5 text-text-secondary" href="#projects">Projets</a>
+          <a class="mx-3 py-1.5 md:px-5 text-text-secondary" href="#projects">Projets</a>
         </li>
         <li>
-          <a class="mx-3 px-2.5 py-1.5 md:px-5 text-text-secondary" href="#skills">Skills</a>
+          <a class="mx-3 py-1.5 md:px-5 text-text-secondary" href="#skills">Skills</a>
         </li>
         <li>
-          <a class="mx-3 px-2.5 py-1.5 md:px-5 text-text-secondary" href="#contact">Contact</a>
+          <a class="mx-3 py-1.5 md:px-5 text-text-secondary" href="#contact">Contact</a>
         </li>
         <li>
-          <a class="mx-3 px-2.5 py-1.5 md:px-5 text-text-secondary" href="/CV_Simon_Vennat.pdf" role="button" target="_blank">CV</a>
+          <a class="mx-3 py-1.5 md:px-5 text-text-secondary" href="/CV_Simon_Vennat.pdf" role="button" target="_blank">CV</a>
         </li>
       </ul>
     </nav>

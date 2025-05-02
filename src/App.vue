@@ -8,12 +8,9 @@ import About from '@/components/About/About.vue'
 import Hero from '@/components/Hero.vue'
 import Projects from '@/components/Project/Projects.vue'
 import Skills from '@/components/Skill/Skills.vue'
-import { useRecaptchaProvider } from 'vue-recaptcha/head'
 
 const storeTheme = useTheme()
 const isDark = computed(() => storeTheme.isDark)
-
-useRecaptchaProvider()
 </script>
 
 <template>
