@@ -2,7 +2,8 @@
     RewriteEngine On
     RewriteBase /
 
-    # Redirection 301 de www vers non-www
+    # Redirection 301 de www vers non-www + HTTP vers HTTPS
+    RewriteCond %{HTTPS} off [OR]
     RewriteCond %{HTTP_HOST} ^www\.simonvennat\.fr$ [NC]
     RewriteRule ^(.*)$ https://simonvennat.fr/$1 [R=301,L]
 
